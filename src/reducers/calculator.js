@@ -9,12 +9,21 @@ const initialState = {
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.CALCULATOR_OPERATION_UPDATE:
+    case actionTypes.CALCULATOR_OPERATION_UPDATE: {
+      let newOperation = state.operation;
+      const isOperator = 'x÷+-'.includes(action.input);
+
+      if (isOperator) {
+        newOperation += ` ${action.input} `;
+      } else {
+        newOperation += action.input;
+      }
+
       return {
         ...state,
-        operation: `${state.operation}${action.input}`,
+        operation: newOperation,
       };
-
+    }
     case actionTypes.CALCULATOR_CALCULATE_RESULT:
       let formatedString = state.operation.replace('÷', '/');
       formatedString = formatedString.replace('x', '*');
