@@ -8,8 +8,8 @@ const OutputScreen = ({ className, operation, result }) => {
 
   return (
     <div className={classes}>
-      <div className="OutputScreen__Operation">{operation}</div>
-      <div className="OutputScreen__Result">{result}</div>
+      <div className="OutputScreen__Operation">{operation ? operation : '\u00A0'}</div>
+      <div className="OutputScreen__Result">{result ? result : '\u00A0'}</div>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Button = ({ text, className, type, disabled, onClick }) => {
   }, className);
 
   return (
-    <div className={classes} onClick={onClick}>
+    <div className={classes} onClick={() => onClick(text)}>
       {text}
     </div>
   );

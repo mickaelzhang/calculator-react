@@ -1,0 +1,14 @@
+@import '~styles/utils';
+
+.ComputeButtonGroup {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__Button {
+    width: 33.33%;
+
+    &--Large {
+      width: 66.66%;
+    }
+  }
+}

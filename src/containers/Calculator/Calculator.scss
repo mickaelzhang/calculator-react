@@ -14,20 +14,10 @@
   }
 
   &__ComputeButtonGroup {
-    display: flex;
-    flex-wrap: wrap;
     width: 75%;
   }
 
   &__ActionButtonGroup {
     width: 25%;
-  }
-
-  &__ComputeButtonGroup .Button {
-      width: 33.33%;
-  }
-
-  &__ComputeButtonGroup &__LargeButton {
-    width: 66.66%;
   }
 }
