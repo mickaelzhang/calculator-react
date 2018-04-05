@@ -17,12 +17,12 @@ class Calculator extends React.Component {
     const { operation, applyResult } = this.props;
     let formatedString = operation.replace('÷', '/');
     formatedString = formatedString.replace('x', '*');
-    let result = 'error';
 
     try {
-      result = math.eval(formatedString);
-    } finally {
+      const result = math.eval(formatedString);
       applyResult({ operation, result });
+    } catch (error) {
+      applyResult({ operation, result: 'error' });
     }
   }
 
