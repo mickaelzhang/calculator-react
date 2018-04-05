@@ -9,6 +9,8 @@ export const updateOperation = (input) => ({
   input
 });
 
-export const calculateResult = () => ({
-  type: actionTypes.CALCULATOR_CALCULATE_RESULT
+export const applyResult = ({ operation, result }) => ({
+  type: actionTypes.CALCULATOR_APPLY_RESULT,
+  operation,
+  result
 });

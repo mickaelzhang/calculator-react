@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import cn from 'classnames';
+import math from 'mathjs';
 
-import { updateOperation, clearCalculator, calculateResult } from '@actions/calculator';
+import { updateOperation, clearCalculator, applyResult } from '@actions/calculator';
 import { getOperationValue, getResultValue } from '@reducers';
 
 import OutputScreen from './components/OutputScreen';
@@ -12,9 +13,22 @@ import ActionButtonGroup from './components/ActionButtonGroup';
 import './Calculator.scss';
 
 class Calculator extends React.Component {
+  calculateResult = () => {
+    const { operation, applyResult } = this.props;
+    let formatedString = operation.replace('÷', '/');
+    formatedString = formatedString.replace('x', '*');
+    let result = 'error';
+
+    try {
+      result = math.eval(formatedString);
+    } finally {
+      applyResult({ operation, result });
+    }
+  }
+
   render() {
     const classes = cn('Calculator');
-    const { operation, result, updateOperation, clearCalculator, calculateResult } = this.props;
+    const { operation, result, updateOperation, clearCalculator } = this.props;
 
     return (
       <div className={classes}>
@@ -32,7 +46,7 @@ class Calculator extends React.Component {
           <ActionButtonGroup
             className="Calculator__ActionButtonGroup"
             onClick={updateOperation}
-            onCalculate={calculateResult}
+            onCalculate={this.calculateResult}
           />
         </div>
       </div>
@@ -49,7 +63,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   updateOperation,
   clearCalculator,
-  calculateResult
+  applyResult
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator);

@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import { createSelector } from 'reselect';
 
 import * as fromCalculator from './calculator';
+import * as fromHistory from './history';
 
 const rootReducer = combineReducers({
   calculator: fromCalculator.reducer,
+  history: fromHistory.reducer,
 });
 
 export const getCalculatorState = state => state.calculator;
