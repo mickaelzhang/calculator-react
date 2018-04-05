@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import './Button.scss';
 
-const Button = ({ text, className, type, disabled, onClick }) => {
+const Button = ({ text, value, className, type, disabled, onClick }) => {
   const classes = cn('Button', {
     'Button--ComputeType': type === 'compute',
     'Button--ActionType': type === 'action',

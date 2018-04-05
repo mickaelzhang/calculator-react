@@ -1,8 +1,10 @@
+import math from 'mathjs';
+
 import * as actionTypes from '@constants/calculator';
 
 const initialState = {
-  operation: "",
-  result: "",
+  operation: '',
+  result: '',
 };
 
 export function reducer(state = initialState, action) {
@@ -12,8 +14,21 @@ export function reducer(state = initialState, action) {
         ...state,
         operation: `${state.operation}${action.input}`,
       };
+
+    case actionTypes.CALCULATOR_CALCULATE_RESULT:
+      let formatedString = state.operation.replace('÷', '/');
+      formatedString = formatedString.replace('x', '*');
+      let result = 'error';
+
+      try {
+        result = math.eval(formatedString);
+      } finally {
+        return { ...state, result };
+      }
+
     case actionTypes.CALCULATOR_CLEAR:
       return initialState;
+
     default:
       return state;
   }

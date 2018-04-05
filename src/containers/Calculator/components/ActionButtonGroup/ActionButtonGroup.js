@@ -10,8 +10,8 @@ const ActionButtonGroup = ({ className, onClick, onCalculate, ...others }) => {
 
   return (
     <div className={classes}>
-      <Button text="÷" type="action" onClick={onClick} />
-      <Button text="x" type="action" onClick={onClick} />
+      <Button text="÷" value="/" type="action" onClick={onClick} />
+      <Button text="x" value="*" type="action" onClick={onClick} />
       <Button text="-" type="action" onClick={onClick} />
       <Button text="+" type="action" onClick={onClick} />
       <Button text="=" type="action" onClick={() => onCalculate()} />
