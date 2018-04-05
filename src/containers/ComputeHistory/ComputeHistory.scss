@@ -1,0 +1,16 @@
+@import '~styles/utils';
+
+.ComputeHistory {
+  position: fixed;
+  @include z-index('nav');
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  &__ToggleMenuIcon {
+    position: fixed;
+    @include z-index('nav', 1);
+    top: 20px;
+    right: 20px;
+  }
+}

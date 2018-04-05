@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Calculator from '@containers/Calculator';
+import ComputeHistory from '@containers/ComputeHistory';
 
 import './App.scss';
 
@@ -9,6 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Calculator />
+        <ComputeHistory />
       </div>
     );
   }
