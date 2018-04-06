@@ -9,7 +9,6 @@ import './ComputeList.scss';
 const ComputeList = ({ className, computes }) => {
   const classes = cn('ComputeList', className);
 
-  console.log(computes);
   const items = computes.map(compute => (
     <ComputeItem
       key={compute.id}

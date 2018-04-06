@@ -13,6 +13,62 @@ import ActionButtonGroup from './components/ActionButtonGroup';
 import './Calculator.scss';
 
 class Calculator extends React.Component {
+  state = {
+    intervalId: null,
+  };
+
+  handleKeyPress = (evt) => {
+    const SPACE_KEY = 32;
+
+    if (evt.keyCode === SPACE_KEY) {
+      this.toggleRandom();
+    }
+  }
+
+  toggleRandom() {
+    const { intervalId } = this.state;
+
+    if (intervalId) {
+      this.stopRandom();
+    } else {
+      this.startRandom();
+    }
+  }
+
+  startRandom = () => {
+    const commands = [
+      'CLEAR', 'CALCULATE',
+      '0', '1', '2',
+      '3', '4', '5',
+      '6', '7', '8',
+      '9', '.',
+      '-', '+', '÷', 'x',
+    ];
+
+    const id = setInterval(() => {
+      const randCommand = commands[Math.floor(Math.random() * commands.length)];
+
+      switch (randCommand) {
+        case 'CLEAR':
+          this.props.clearCalculator();
+          break;
+        case 'CALCULATE':
+          this.calculateResult();
+          break;
+        default:
+          this.props.updateOperation(randCommand);
+          break;
+      }
+    }, 100);
+
+    this.setState({ intervalId: id })
+  }
+
+  stopRandom() {
+    clearInterval(this.state.intervalId);
+    this.setState({ intervalId: null });
+  }
+
   calculateResult = () => {
     const { operation, applyResult } = this.props;
     let formatedString = operation.replace('÷', '/');
@@ -20,10 +76,18 @@ class Calculator extends React.Component {
 
     try {
       const result = math.eval(formatedString);
-      applyResult({ operation, result });
+      applyResult({ operation, result: result.toString() });
     } catch (error) {
       applyResult({ operation, result: 'error' });
     }
+  }
+
+  componentWillMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress);
   }
 
   render() {
