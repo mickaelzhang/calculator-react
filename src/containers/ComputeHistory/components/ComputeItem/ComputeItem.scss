@@ -1,0 +1,20 @@
+@import '~styles/utils';
+
+.ComputeItem {
+  padding: 14px 20px 10px;
+  background-color: $white;
+  border-bottom: 1px solid rgba($black, 0.06);
+
+  &:hover {
+    background-color: darken($white, 4)
+  }
+
+  &__Operation {
+    font-size: 14px;
+    color: rgba($color-font-primary, 0.6);
+  }
+
+  &__Result {
+    font-size: 28px;
+  }
+}
