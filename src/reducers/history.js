@@ -7,38 +7,7 @@ const initialState = {
   filter: {
     search: '',
   },
-  list: [
-    {
-      id: 5,
-      operation: '12',
-      result: '12',
-    },
-    {
-      id: 4,
-      operation: '9 x 2',
-      result: '18',
-    },
-    {
-      id: 3,
-      operation: '4 + 4 +',
-      result: 'error',
-    },
-    {
-      id: 2,
-      operation: '4 + 4 + 102',
-      result: '110',
-    },
-    {
-      id: 1,
-      operation: '6 / 2',
-      result: '3',
-    },
-    {
-      id: 0,
-      operation: '50 x 2',
-      result: '100',
-    },
-  ],
+  list: [],
 };
 
 export function reducer(state = initialState, action) {

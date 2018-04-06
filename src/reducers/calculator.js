@@ -8,9 +8,20 @@ const initialState = {
 export function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CALCULATOR_OPERATION_UPDATE: {
-      let newOperation = state.operation;
+      let newOperation, result;
+
+      if (state.result === '') {
+        newOperation = state.operation;
+        result = state.result;
+      } else {
+        // Reset both input if result is not empty (when previous action was to calculate the result)
+        newOperation = '';
+        result = '';
+      }
+
       const isOperator = 'x÷+-'.includes(action.input);
 
+      // Add space around input if it's an operator
       if (isOperator) {
         newOperation += ` ${action.input} `;
       } else {
@@ -20,6 +31,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         operation: newOperation,
+        result,
       };
     }
     case actionTypes.CALCULATOR_APPLY_RESULT:
