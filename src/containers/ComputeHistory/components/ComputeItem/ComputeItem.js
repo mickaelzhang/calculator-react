@@ -1,6 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { outputFormat } from '@utils/output';
+
 import './ComputeItem.scss';
 
 const ComputeItem = ({ className, operation, result }) => {
@@ -9,7 +11,7 @@ const ComputeItem = ({ className, operation, result }) => {
   return (
     <div className={classes}>
       <div className="ComputeItem__Operation">{operation}</div>
-      <div className="ComputeItem__Result">= {result}</div>
+      <div className="ComputeItem__Result">= {outputFormat(result)}</div>
     </div>
   );
 };

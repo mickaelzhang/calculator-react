@@ -71,14 +71,19 @@ class Calculator extends React.Component {
 
   calculateResult = () => {
     const { operation, applyResult } = this.props;
-    let formatedString = operation.replace('÷', '/');
-    formatedString = formatedString.replace('x', '*');
 
-    try {
-      const result = math.eval(formatedString);
-      applyResult({ operation, result: result.toString() });
-    } catch (error) {
-      applyResult({ operation, result: 'error' });
+    if (operation === '') {
+      applyResult({ operation, result: '0' });
+    } else {
+      let formatedString = operation.replace('÷', '/');
+      formatedString = formatedString.replace('x', '*');
+
+      try {
+        const result = math.eval(formatedString);
+        applyResult({ operation, result: result.toString() });
+      } catch (error) {
+        applyResult({ operation, result: 'error' });
+      }
     }
   }
 
