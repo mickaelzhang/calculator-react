@@ -1,0 +1,16 @@
+@import '~styles/utils';
+
+.OutputScreen {
+  padding: 18px 20px 14px;
+  text-align: right;
+  border-bottom: rgba($black, 0.07) 1px solid;
+
+  &__Operation {
+    font-size: 14px;
+    color: rgba($color-font-primary, 0.6);
+  }
+
+  &__Result {
+    font-size: 36px;
+  }
+}

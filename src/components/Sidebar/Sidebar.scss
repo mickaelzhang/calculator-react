@@ -1,0 +1,14 @@
+@import '~styles/utils';
+
+.Sidebar {
+  background-color: $white;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0px 0px 40px 0px rgba($black, 0.18);
+  transform: translateX(100%);
+  transition: 0.25s ease-out transform;
+
+  &--Active {
+    transform: translateX(0);
+  }
+}

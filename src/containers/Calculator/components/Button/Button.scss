@@ -1,0 +1,32 @@
+@import '~styles/utils';
+
+.Button {
+  cursor: pointer;
+  text-align: center;
+  border: rgba($black, 0.07) 1px solid;
+
+  line-height: 46px;
+  font-size: 23px;
+
+  &--ComputeType {
+    background-color: $white;
+
+    &:hover {
+      background-color: darken($white, 4);
+    }
+  }
+
+  &--ActionType {
+    background-color: $orange-saffron-mango;
+    color: $white;
+
+    &:hover {
+      background-color: lighten($orange-saffron-mango, 4);
+    }
+  }
+
+  &--Disable {
+    pointer-events: none;
+    cursor: default;
+  }
+}

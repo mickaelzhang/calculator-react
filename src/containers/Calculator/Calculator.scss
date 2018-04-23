@@ -1,0 +1,23 @@
+@import '~styles/utils';
+
+.Calculator {
+  background-color: $white;
+  box-shadow: 0px 25px 40px 0px rgba($black, 0.18);
+
+  width: 100%;
+  max-width: 260px;
+  border-radius: 6px;
+  overflow: hidden;
+
+  &__InputArea {
+    display: flex;
+  }
+
+  &__ComputeButtonGroup {
+    width: 75%;
+  }
+
+  &__ActionButtonGroup {
+    width: 25%;
+  }
+}
